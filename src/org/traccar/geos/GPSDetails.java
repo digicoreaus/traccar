@@ -99,42 +99,42 @@ public class GPSDetails{
             return gpsDetails;
         }
 
-        public void setGpsDatetime(String gpsDatetime){
+        public Builder setGpsDatetime(String gpsDatetime){
             gpsDetails.gpsDatetime = gpsDatetime;
             return this;
         }
 
-        public void setGpsFix(String gpsFix){
+        public Builder setGpsFix(String gpsFix){
             gpsDetails.gpsFix = gpsFix;
             return this;
         }
 
-        public void setGpsStatus(String gpsStatus){
+        public Builder setGpsStatus(String gpsStatus){
             gpsDetails.gpsStatus = gpsStatus;
             return this;
         }
 
-        public void setLat(double lat){
+        public Builder setLat(double lat){
             gpsDetails.lat = lat;
             return this;
         }
 
-        public void setLon(double lon){
+        public Builder setLon(double lon){
             gpsDetails.lon = lon;
             return this;
         }
 
-        public void setHeading(double heading){
+        public Builder setHeading(double heading){
             gpsDetails.heading = heading;
             return this;
         }
 
-        public void setSpeed(double speed){
+        public Builder setSpeed(double speed){
             gpsDetails.speed = speed;
             return this;
         }
 
-        public void setAltitude(double altitude){
+        public Builder setAltitude(double altitude){
             gpsDetails.altitude = altitude;
             return this;
         }

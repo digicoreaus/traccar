@@ -16,6 +16,7 @@ package org.traccar.geos;
  */
 
 import java.net.URL;
+import java.net.MalformedURLException;
 
 import org.traccar.Config;
 
@@ -28,7 +29,7 @@ public class SOS{
     private String user = null;
     private String pass = null;
 
-    public SOS(Config config){
+    public SOS(Config config) throws MalformedURLException{
         if(config.hasKey(SOS_URL)){
             url = new URL(config.getString(SOS_URL));
         }

@@ -28,7 +28,7 @@ import org.traccar.Config;
 @Path("Emergency")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-private interface Client{
+public interface Client{
     @POST
     public void send(EmergencyData emergencyData);
 }
