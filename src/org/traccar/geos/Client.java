@@ -17,18 +17,33 @@ package org.traccar.geos;
 
 import java.net.URL;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.Path;
-import javax.ws.rs.POST;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
 
 import org.traccar.Config;
 
-@Path("Emergency")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
-public interface Client{
-    @POST
-    public void send(EmergencyData emergencyData);
+public class Client{
+    private Invocation.Builder invoker;
+
+    public Client(String target){
+        this(new URL(target));
+    }
+
+    public Client(URL target){
+        javax.ws.rs.client.Client client = ClientBuilder.newClient();
+        WebTarget wt = client.target(target).path("Emergency");
+        invoker = wt.request(MediaType.APPLICATION_JSON);
+    }
+
+    public EmergencyAck send(EmergencyData emergencyData){
+        return invoker.post(
+            Entity.entity(
+                emergencyData,
+                MediaType.APPLICATION_JSON
+            ),
+            EmergencyAck.class
+        );
+    }
 }
